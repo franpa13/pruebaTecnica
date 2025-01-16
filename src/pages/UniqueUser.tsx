@@ -19,6 +19,7 @@ export const UniqueUser = () => {
 
 
   if (!user) return null
+  if (error) return null
   const viewAll = () => {
     setShowAllOrders((prev) => !prev);
   };

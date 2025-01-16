@@ -1,4 +1,4 @@
-import React from 'react'
+
 
 import { SpinnerComponent } from './SpinnerComponent'
 export const LoadingComponent = () => {
