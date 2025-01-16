@@ -8,7 +8,7 @@ export const useFetchUserById = (url: string, idUser: string | undefined): [User
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const processUserData = async () => {
+        const processUserData = () => {
             try {
 
                 if (data.length > 0 && idUser) {
@@ -16,12 +16,12 @@ export const useFetchUserById = (url: string, idUser: string | undefined): [User
                     setUser(uniqueUser || null);
                 }
 
-                const delay = 300;
+                // const delay = 300;
 
-                setTimeout(() => {
-                    setLoading(false);
-                }, delay);
-
+                // setTimeout(() => {
+                //     setLoading(false);
+                // }, delay);
+                setLoading(false)
             } catch {
                 setLoading(false);
             }
@@ -30,5 +30,5 @@ export const useFetchUserById = (url: string, idUser: string | undefined): [User
         processUserData();
     }, [data, idUser]);
 
-    return [user, loading || initialLoading, error];
+    return [user, loading, error];
 };

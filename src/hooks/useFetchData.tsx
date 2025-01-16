@@ -18,9 +18,10 @@ export const useFetchData = <T,>(url: string): [T[], boolean, string] => {
 
 
 
-                setTimeout(() => {
-                    setLoading(false);
-                }, 300);
+                // setTimeout(() => {
+                //     setLoading(false);
+                // }, 500);
+                setLoading(false)
             } catch (err: any) {
                 setError(err.message);
                 setLoading(false);

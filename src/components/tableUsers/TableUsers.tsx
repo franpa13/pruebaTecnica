@@ -3,6 +3,7 @@ import { TableProps, TableColumn, TableRow } from "./../../types/types";
 import { ErrorText } from "../ui/ErrorText";
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 import { IconButton } from "@mui/material";
@@ -10,7 +11,7 @@ import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 
 export const TableUsers = ({ columns, data, actions }: TableProps) => {
 
-
+  const navigate = useNavigate()
   const rowsPerPage = 10;
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -30,7 +31,9 @@ export const TableUsers = ({ columns, data, actions }: TableProps) => {
       setCurrentPage(newPage);
     }
   };
-
+  const viewUserDetail = (row: TableRow) => {
+    navigate(`/user/${row.id}`)
+  }
   return (
     <div className="w-full m-1 md:m-0 md:w-3/4 lg:w-1/2 md:mt-12 relative overflow-x-auto shadow-md sm:rounded-lg">
       <div className="overflow-x-auto">
@@ -70,11 +73,11 @@ export const TableUsers = ({ columns, data, actions }: TableProps) => {
                     </td>
                   )}
                   <td>
-                    <Link to={`/user/${row.id}`} className="p-1">
+                    <button onClick={() => viewUserDetail(row)} className="p-1">
                       <IconButton color="inherit">
                         <VisibilityOutlinedIcon color="inherit"></VisibilityOutlinedIcon>
                       </IconButton>
-                    </Link>
+                    </button>
                   </td>
                 </tr>
               ))}

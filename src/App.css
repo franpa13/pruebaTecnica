@@ -1,5 +1,7 @@
 html, body {
     margin: 0;
     padding: 0;
-    overflow-x: hidden; /* Evitar desbordamiento horizontal */
+    overflow-x: hidden; 
+    background-color:#121212 ;
+    /* Evitar desbordamiento horizontal */
 }
