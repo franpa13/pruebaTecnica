@@ -224,12 +224,12 @@
         "amount": 25.00,
         "date": "2023-03-15"
       },{
-        "orderId": "E002",
+        "orderId": "E003",
         "product": "Funda para Tablet",
         "amount": 25.00,
         "date": "2023-03-15"
       },{
-        "orderId": "E002",
+        "orderId": "E004",
         "product": "Funda para Tablet",
         "amount": 25.00,
         "date": "2023-03-15"
@@ -264,6 +264,11 @@
       {
         "orderId": "G001",
         "product": "Cámara",
+        "amount": 450.00,
+        "date": "2023-09-10"
+      },{
+        "orderId": "G002",
+        "product": "CELULAR",
         "amount": 450.00,
         "date": "2023-09-10"
       }
@@ -345,6 +350,11 @@
         "product": "Bocina Bluetooth",
         "amount": 95.00,
         "date": "2023-05-10"
+      },{
+        "orderId": "H001",
+        "product": "Smartphone",
+        "amount": 350.00,
+        "date": "2023-07-05"
       }
     ],
     "comments": 24,
@@ -404,6 +414,11 @@
         "product": "Proyector",
         "amount": 200.00,
         "date": "2023-03-05"
+      },{
+        "orderId": "H001",
+        "product": "Smartphone",
+        "amount": 350.00,
+        "date": "2023-07-05"
       }
     ],
     "comments": 55,
@@ -431,7 +446,17 @@
     "age": 40,
     "registeredAt": "2019-09-15",
     "isActive": true,
-    "orders": [],
+    "orders": [{
+      "orderId": "J001",
+      "product": "Proyector",
+      "amount": 200.00,
+      "date": "2023-03-05"
+    },{
+      "orderId": "J001",
+      "product": "Proyector",
+      "amount": 200.00,
+      "date": "2023-03-05"
+    }],
     "comments": 5,
     "friends": 5
   },
@@ -450,6 +475,16 @@
         "product": "Mesa de escritorio",
         "amount": 150.00,
         "date": "2023-03-11"
+      },{
+        "orderId": "J001",
+        "product": "Proyector",
+        "amount": 200.00,
+        "date": "2023-03-05"
+      },{
+        "orderId": "J001",
+        "product": "Proyector",
+        "amount": 200.00,
+        "date": "2023-03-05"
       }
     ],
     "comments": 1,
@@ -483,6 +518,16 @@
         "product": "Monitor 4K",
         "amount": 450.00,
         "date": "2023-06-15"
+      },{
+        "orderId": "J001",
+        "product": "Proyector",
+        "amount": 200.00,
+        "date": "2023-03-05"
+      },{
+        "orderId": "J001",
+        "product": "Proyector",
+        "amount": 200.00,
+        "date": "2023-03-05"
       }
     ],
     "comments": 7,
@@ -543,7 +588,17 @@
     "age": 38,
     "registeredAt": "2020-06-25",
     "isActive": false,
-    "orders": [],
+    "orders": [{
+      "orderId": "J005",
+      "product": "Audífonos",
+      "amount": 80.00,
+      "date": "2023-07-20"
+    },{
+      "orderId": "J005",
+      "product": "Audífonos",
+      "amount": 80.00,
+      "date": "2023-07-20"
+    }],
     "comments": 58,
     "friends": 31
   }

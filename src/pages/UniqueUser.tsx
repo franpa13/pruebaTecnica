@@ -35,21 +35,52 @@ export const UniqueUser = () => {
     <MainLayout>
 
 
-      <div className="p-2 md:p-8  dark:bg-darkPrimary dark:text-lightText">
+      <motion.div initial="hidden"
+        animate="visible"
+        variants={animationVariants}
+        transition={{ duration: 0.5, staggerChildren: 0.1 }} className="p-2 md:p-8  dark:bg-darkPrimary dark:text-lightText">
         <div className="p-8 bg-white rounded shadow mt-24 dark:bg-darkSecondary">
           <div className="grid grid-cols-1 md:grid-cols-3">
             {/* Stats Section */}
-            <motion.div initial="hidden"
+            <motion.div
+              initial="hidden"
               animate="visible"
               variants={animationVariants}
-              transition={{ duration: 0.5, staggerChildren: 0.1 }} className="grid grid-cols-2 text-center order-last md:order-first mt-6 md:mt-0">
+              transition={{ duration: 0.5, staggerChildren: 0.1 }}
+              className="grid grid-cols-2 text-center order-last md:order-first mt-6 md:mt-0"
+              role="region" aria-labelledby="stats-section"
+            >
               <div>
-                <p className="font-bold text-gray-700 text-xl dark:text-lightText">{user.friends}</p>
-                <p className="text-gray-400 dark:text-mutedText">Friends</p>
+                <p
+                  id="friends-count"
+                  aria-label={`Número de amigos: ${user.friends}`}
+                  className="font-bold text-gray-700 text-xl dark:text-lightText"
+                >
+                  {user.friends}
+                </p>
+                <p
+                  id="friends-label"
+                  aria-label="Número de amigos"
+                  className="text-gray-400 dark:text-mutedText"
+                >
+                  Amigos
+                </p>
               </div>
               <div>
-                <p className="font-bold text-gray-700 text-xl dark:text-lightText">{user.comments}</p>
-                <p className="text-gray-400 dark:text-mutedText">Comments</p>
+                <p
+                  id="comments-count"
+                  aria-label={`Número de comentarios: ${user.comments}`}
+                  className="font-bold text-gray-700 text-xl dark:text-lightText"
+                >
+                  {user.comments}
+                </p>
+                <p
+                  id="comments-label"
+                  aria-label="Número de comentarios"
+                  className="text-gray-400 dark:text-mutedText"
+                >
+                  Comentarios
+                </p>
               </div>
             </motion.div>
 
@@ -73,11 +104,11 @@ export const UniqueUser = () => {
 
               {user.isActive ? (
                 <div className="space-x-8 flex justify-center mt-32 md:mt-0 md:justify-end">
-                  <PrimaryButton text="Activo ahora" color="secondary" icon={RadioButtonCheckedOutlinedIcon} />
+                  <PrimaryButton sx={{ pointerEvents: "none" }} text="Activo ahora" color="secondary" icon={RadioButtonCheckedOutlinedIcon} />
                 </div>
               ) : (
                 <div className="space-x-8 flex justify-center mt-32 md:mt-0 md:justify-end">
-                  <PrimaryButton text="Inactivo" color="error" icon={RadioButtonUncheckedRoundedIcon} />
+                  <PrimaryButton sx={{ pointerEvents: "none" }} text="Inactivo" color="error" icon={RadioButtonUncheckedRoundedIcon} />
                 </div>
               )}
             </motion.div>
@@ -102,7 +133,7 @@ export const UniqueUser = () => {
             <ErrorText text={`${user.name} no posee órdenes registradas`} />
           ) : (
             <>
-              <p className="font-medium text-gray-500 dark:text-customBlue mt-2 text-lg text-center">
+              <p aria-label="Órdenes registradas" className="font-medium  text-gray-500 dark:text-customBlue mt-2 text-lg text-center">
                 Órdenes registradas
               </p>
 
@@ -111,24 +142,25 @@ export const UniqueUser = () => {
                 initial="hidden"
                 animate="visible"
                 variants={animationVariants}
-                transition={{ duration: 0.5, staggerChildren: 0.1 }}
+                transition={{ duration: 0.7, staggerChildren: 0.1 }}
               >
                 {ordersToShow.map((ord: Order) => (
                   <motion.div
                     className="flex w-full text-start flex-col items-start"
                     key={ord.orderId}
+
                     variants={animationVariants}
                   >
-                    <p className="mt-0 text-start text-customBlue dark:text-accentBlue">
+                    <p aria-label={` id de orden: ${ord.orderId} `} className="mt-0 text-start text-customBlue dark:text-accentBlue">
                       id de orden: #{ord.orderId}
                     </p>
-                    <p className="mt-0 text-start text-darkSecondary dark:text-mutedText">
+                    <p aria-label={` fecha de la orden: ${ord.date} `} className="mt-0 text-start text-darkSecondary dark:text-mutedText">
                       fecha de la orden: {ord.date}
                     </p>
-                    <p className="mt-0 text-start text-darkSecondary dark:text-mutedText">
+                    <p aria-label={`  producto : ${ord.product} `} className="mt-0 text-start text-darkSecondary dark:text-mutedText">
                       producto: {ord.product}
                     </p>
-                    <p className="mt-0 text-start text-darkSecondary dark:text-mutedText">
+                    <p aria-label={`  precio : ${ord.amount} `} className="mt-0 text-start text-darkSecondary dark:text-mutedText">
                       precio: ${ord.amount}
                     </p>
                   </motion.div>
@@ -141,7 +173,7 @@ export const UniqueUser = () => {
             <motion.div initial="hidden"
               animate="visible"
               variants={animationVariants}
-              transition={{ duration: 0.5, staggerChildren: 0.1 }} className="flex justify-center mt-10">
+              transition={{ duration: 0.7, staggerChildren: 0.1 }} className="flex justify-center mt-10">
               <PrimaryButton
                 onClick={viewAll}
                 icon={showAllOrders ? KeyboardArrowUpOutlinedIcon : ExpandMoreOutlinedIcon}
@@ -151,7 +183,7 @@ export const UniqueUser = () => {
           )}
 
         </div>
-      </div>
+      </motion.div>
 
     </MainLayout>
   );

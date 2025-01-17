@@ -30,10 +30,11 @@ export const InputText = ({
         placeholder={placeholder}
         className={`dark:bg-darkSecondary border-[2px] border-customBlue dark:text-lightText text-black p-2 rounded w-full font-semibold mb-0 focus:outline-none focus:border-accentBlue  ${className}`} // Añadir padding izquierdo para el ícono
         type={type}
+        aria-label={placeholder}
         name={name}
         id={id}
       />
-      
+
       {/* Ícono dentro del contenedor */}
       {icon && (
         <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500">

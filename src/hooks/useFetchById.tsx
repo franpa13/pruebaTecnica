@@ -3,7 +3,7 @@ import { useFetchData } from "./useFetchData";
 import { User } from "../types/types";
 
 export const useFetchUserById = (url: string, idUser: string | undefined): [User | null, boolean, string] => {
-    const [data, initialLoading, error] = useFetchData<User>(url);
+    const [data, initialLoading, error] = useFetchData(url);
     const [user, setUser] = useState<User | null>(null);
     const [loading, setLoading] = useState(true);
 
@@ -16,12 +16,12 @@ export const useFetchUserById = (url: string, idUser: string | undefined): [User
                     setUser(uniqueUser || null);
                 }
 
-                // const delay = 300;
+                const delay = 400;
 
-                // setTimeout(() => {
-                //     setLoading(false);
-                // }, delay);
-                setLoading(false)
+                setTimeout(() => {
+                    setLoading(false);
+                }, delay);
+
             } catch {
                 setLoading(false);
             }

@@ -36,7 +36,9 @@ export const ToggleTheme: React.FC = () => {
                     color: 'white',
                 }}
             >
-                <IconButton onClick={toggleDarkMode} color="primary">
+                <IconButton onClick={toggleDarkMode} color="primary" aria-label={darkMode ? "Cambiar a modo claro" : "Cambiar a modo oscuro"}
+                    // aria pressed   para que el usuario vea en que estado se encuentra  el modo
+                    aria-pressed={darkMode} >
                     <AnimatePresence mode="wait">
                         {darkMode ? (
                             <motion.div

@@ -1,44 +1,41 @@
-import { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { TableProps, TableColumn, TableRow } from "./../../types/types";
 import { ErrorText } from "../ui/ErrorText";
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
-
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 import { IconButton } from "@mui/material";
-import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
+import { useNavigate } from "react-router-dom";
 
-export const TableUsers = ({ columns, data, actions }: TableProps) => {
+export const TableUsers = ({ columns, data, actions, filterValue }: TableProps) => {
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const rowsPerPage = 10;
   const [currentPage, setCurrentPage] = useState(1);
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
+  // Solo para paginación si el filtro está vacío
   const indexOfLastRow = currentPage * rowsPerPage;
   const indexOfFirstRow = indexOfLastRow - rowsPerPage;
 
+  const currentData = filterValue === "" ? data.slice(indexOfFirstRow, indexOfLastRow) : data;
 
-  const currentData = data.slice(indexOfFirstRow, indexOfLastRow);
+  
+  // evitar varios renderizados 
+  const handlePageChange = useCallback(
+    (newPage: number) => {
+      if (newPage > 0 && newPage <= Math.ceil(data.length / rowsPerPage) && filterValue === "") {
+        setCurrentPage(newPage);
+      }
+    },
+    [data.length, rowsPerPage, filterValue] // Dependencias
+  );
 
-  // REINICIAR A LA PAG 1 CUANDO BUSQUE ALGO
-  useEffect(() => {
-    setCurrentPage(1);
-  }, [data]);
-
-  const handlePageChange = (newPage: number) => {
-    if (newPage > 0 && newPage <= Math.ceil(data.length / rowsPerPage)) {
-      setCurrentPage(newPage);
-    }
-  };
-  const viewUserDetail = (row: TableRow) => {
-    navigate(`/user/${row.id}`)
-  }
   return (
     <div className="w-full m-1 md:m-0 md:w-3/4 lg:w-1/2 md:mt-12 relative overflow-x-auto shadow-md sm:rounded-lg">
       <div className="overflow-x-auto">
         {data.length === 0 ? (
-          <ErrorText text="No se encontraron usuarios" ></ErrorText>
+          <ErrorText text="No se encontraron usuarios" />
         ) : (
           <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
             <thead className="text-xs text-black uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -59,8 +56,9 @@ export const TableUsers = ({ columns, data, actions }: TableProps) => {
             <tbody>
               {currentData.map((row: TableRow, index: number) => (
                 <tr
+                  aria-label={row.name}
                   key={index}
-                  className="bg-white dark:text-gray-40 font-semibold border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+                  className={`bg-white dark:text-gray-40 font-semibold border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 ${activeIndex === index ? "bg-blue-100 dark:bg-blue-800" : ""}`}
                 >
                   {columns.map((column: TableColumn) => (
                     <td key={column.accessor} className="px-6 py-4">
@@ -73,9 +71,9 @@ export const TableUsers = ({ columns, data, actions }: TableProps) => {
                     </td>
                   )}
                   <td>
-                    <button onClick={() => viewUserDetail(row)} className="p-1">
+                    <button onClick={() => navigate(`/user/${row.id}`)} className="p-1">
                       <IconButton color="inherit">
-                        <VisibilityOutlinedIcon color="inherit"></VisibilityOutlinedIcon>
+                        <VisibilityOutlinedIcon color="inherit" />
                       </IconButton>
                     </button>
                   </td>
@@ -86,16 +84,17 @@ export const TableUsers = ({ columns, data, actions }: TableProps) => {
         )}
       </div>
 
-      {/* Paginación */}
-      {data.length > 0 && (
+      {/* Paginación: Solo se muestra cuando no hay filtro */}
+      {filterValue === "" && data.length > 0 && (
         <div className="flex justify-end gap-3 items-center mt-1 bg-lightText dark:bg-darkSecondary py-1">
           <button
             onClick={() => handlePageChange(currentPage - 1)}
             disabled={currentPage === 1}
             className="rounded"
+            aria-label="Página anterior"
           >
             <IconButton color="primary">
-              <ArrowBackIosIcon fontSize="small"></ArrowBackIosIcon>
+              <ArrowBackIosIcon fontSize="small" />
             </IconButton>
           </button>
 
@@ -106,9 +105,10 @@ export const TableUsers = ({ columns, data, actions }: TableProps) => {
           <button
             onClick={() => handlePageChange(currentPage + 1)}
             disabled={currentPage === Math.ceil(data.length / rowsPerPage)}
+            aria-label="Página siguiente"
           >
             <IconButton color="primary">
-              <ArrowForwardIosIcon fontSize="small"></ArrowForwardIosIcon>
+              <ArrowForwardIosIcon fontSize="small" />
             </IconButton>
           </button>
         </div>

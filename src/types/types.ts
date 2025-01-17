@@ -35,4 +35,5 @@ export interface TableColumn {
     columns: TableColumn[];
     data: TableRow[];
     actions?: (row: TableRow) => React.ReactNode;
+    filterValue : string
   }

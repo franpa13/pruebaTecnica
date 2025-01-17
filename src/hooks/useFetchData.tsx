@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
+import { User } from "../types/types";
 
-export const useFetchData = <T,>(url: string): [T[], boolean, string] => {
-    const [data, setData] = useState<T[]>([]);
+export const useFetchData = (url: string): [User[], boolean, string] => {
+    const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
 
@@ -18,10 +19,10 @@ export const useFetchData = <T,>(url: string): [T[], boolean, string] => {
 
 
 
-                // setTimeout(() => {
-                //     setLoading(false);
-                // }, 500);
-                setLoading(false)
+                setTimeout(() => {
+                    setLoading(false);
+                }, 400);
+
             } catch (err: any) {
                 setError(err.message);
                 setLoading(false);
