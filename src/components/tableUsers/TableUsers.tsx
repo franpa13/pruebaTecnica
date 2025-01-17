@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { TableProps, TableColumn, TableRow } from "./../../types/types";
 import { ErrorText } from "../ui/ErrorText";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
@@ -13,14 +13,16 @@ export const TableUsers = ({ columns, data, actions, filterValue }: TableProps) 
   const rowsPerPage = 10;
   const [currentPage, setCurrentPage] = useState(1);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
-
+  useEffect(() => {
+    setActiveIndex(null)
+  }, [data])
   // Solo para paginación si el filtro está vacío
   const indexOfLastRow = currentPage * rowsPerPage;
   const indexOfFirstRow = indexOfLastRow - rowsPerPage;
 
   const currentData = filterValue === "" ? data.slice(indexOfFirstRow, indexOfLastRow) : data;
 
-  
+
   // evitar varios renderizados 
   const handlePageChange = useCallback(
     (newPage: number) => {
