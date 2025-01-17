@@ -1,3 +1,5 @@
+
+
 # PRUEBA TECNICA REACT + TS 
 # UX/UI
 
@@ -8,6 +10,7 @@ El diseño está pensado para ser parte de un dashboard de administración de un
 Para mejorar la comodidad visual, el sistema incluye un modo oscuro por defecto, que es el que utilizo personalmente, pero también permite al usuario cambiarlo según sus preferencias, adaptándose a las necesidades de cada uno.
 
 Aunque no era estrictamente necesario, implementé el uso de un componente de loading (spinner) que se activa cuando se realiza una petición (en este caso, a datos estáticos). Creo que el spinner mejora la interacción con el usuario en casos reales, especialmente cuando la carga de datos puede tardar.
+
 # COMO HARIA EL PROYECTO ESCALABLE PARA LISTAS MAS GRANDES ? 
 -Para lista más grandes recomendaría el filtrado de datos del lado del servidor, es decir un endpoint que la búsqueda la procese el backend, esto es recomendable para listas muy grandes
 -Implementar lazy loading, por ejemplo cargar los datos mientras el usuario hace scroll hacia abajo, es decir solo renderizar los elementos necesarios
@@ -22,47 +25,25 @@ REACT ROUTER DOM -Usado para la gestión de rutas, permitiendo una navegación d
 ZUSTAND - Si bien no era totalmente necesario, esta librería de manejo de estado es simple y ligera, lo que permite una gestión del estado eficiente y sencilla junto con un codigo escalable.
 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## DEPLOY EN VERCEL
+https://prueba-tecnica-gilt.vercel.app/
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Inicialización del Proyecto
 
-- Configure the top-level `parserOptions` property like this:
+Sigue estos pasos para inicializar y ejecutar el proyecto localmente.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+### 1. Clonar el repositorio
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+Si aún no tienes el proyecto en tu máquina local, clona el repositorio con el siguiente comando:
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+git clone https://github.com/franpa13/pruebaTecnica.git
+
+### 2.
+Ubicate en el directorio pruebaTecnica y ejecuta npm i
+
+
+### 3.
+La app se ejecutara en [local](http://localhost:5173/)
+
