@@ -16,7 +16,7 @@ export const TableUsers = ({ columns, data, actions, filterValue }: TableProps) 
   useEffect(() => {
     setActiveIndex(null)
   }, [data])
-  // Solo para paginación si el filtro está vacío
+  // solo pagina si el filterValue esta vacio
   const indexOfLastRow = currentPage * rowsPerPage;
   const indexOfFirstRow = indexOfLastRow - rowsPerPage;
 
@@ -30,7 +30,7 @@ export const TableUsers = ({ columns, data, actions, filterValue }: TableProps) 
         setCurrentPage(newPage);
       }
     },
-    [data.length, rowsPerPage, filterValue] // Dependencias
+    [data.length, rowsPerPage, filterValue]
   );
 
   return (
@@ -86,7 +86,7 @@ export const TableUsers = ({ columns, data, actions, filterValue }: TableProps) 
         )}
       </div>
 
-      {/* Paginación: Solo se muestra cuando no hay filtro */}
+      {/*paginacion se muestra cuando no hay filtro */}
       {filterValue === "" && data.length > 0 && (
         <div className="flex justify-end gap-3 items-center mt-1 bg-lightText dark:bg-darkSecondary py-1">
           <button

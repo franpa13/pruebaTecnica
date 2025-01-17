@@ -37,9 +37,9 @@ export const Home = () => {
       variants={animationVariants}
       transition={{ duration: 0.5, staggerChildren: 0.1 }}
     >
-      <div className="flex justify-center w-full mt-0">
+      <form className="flex justify-center w-full mt-0">
         <SearchComponent onSearch={handleSearch} />
-      </div>
+      </form>
       <div className="w-full flex justify-center mt-12">
         <TableUsers columns={columns} data={filteredData} filterValue={filterValue} />
       </div>

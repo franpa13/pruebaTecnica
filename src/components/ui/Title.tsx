@@ -3,17 +3,13 @@ import { SvgIconProps } from '@mui/material/SvgIcon';
 
 interface TitleProps {
     text: string;
-
-
     color: string,
     icon?: React.ElementType<SvgIconProps>;
 }
 
 export const Title = ({
     text,
-
     color,
-
     icon: Icon
 }: TitleProps) => {
     return (

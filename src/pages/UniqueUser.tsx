@@ -11,14 +11,15 @@ import { Order } from "../types/types";
 
 import { motion } from "framer-motion";
 import { ErrorText, LoadingComponent, PrimaryButton } from "../components";
+import { NotFound } from "./NotFound";
 export const UniqueUser = () => {
   const { idUser } = useParams();
   const [user, loading, error] = useFetchUserById("/data/data.json", idUser);
   const [showAllOrders, setShowAllOrders] = useState(false);
 
   if (loading) return <LoadingComponent></LoadingComponent>
-  if (!user) return <LoadingComponent></LoadingComponent>
-  if (error) return <LoadingComponent></LoadingComponent>
+  if (!user) return <NotFound></NotFound>
+  if (error) return <NotFound></NotFound>
   const viewAll = () => {
     setShowAllOrders((prev) => !prev);
   };
@@ -41,7 +42,7 @@ export const UniqueUser = () => {
         transition={{ duration: 0.5, staggerChildren: 0.1 }} className="p-2 md:p-8  dark:bg-darkPrimary dark:text-lightText">
         <div className="p-8 bg-white rounded shadow mt-24 dark:bg-darkSecondary">
           <div className="grid grid-cols-1 md:grid-cols-3">
-            {/* Stats Section */}
+            {/* stats */}
             <motion.div
               initial="hidden"
               animate="visible"
@@ -84,7 +85,7 @@ export const UniqueUser = () => {
               </div>
             </motion.div>
 
-            {/* Profile Picture Section */}
+            {/* profile section */}
             <motion.div initial="hidden"
               animate="visible"
               variants={animationVariants}
@@ -96,7 +97,7 @@ export const UniqueUser = () => {
               </div>
             </motion.div>
 
-            {/* Active Section */}
+            {/* user active section */}
             <motion.div initial="hidden"
               animate="visible"
               variants={animationVariants}
@@ -114,7 +115,7 @@ export const UniqueUser = () => {
             </motion.div>
           </div>
 
-          {/* User Information Section */}
+          {/* information user */}
           <motion.div initial="hidden"
             animate="visible"
             variants={animationVariants}
@@ -128,7 +129,7 @@ export const UniqueUser = () => {
             <p className="mt-2 text-gray-600 dark:text-mutedText">Registrado en : {user.registeredAt}</p>
           </motion.div>
 
-          {/* Sección de órdenes */}
+          {/* ordenes*/}
           {user.orders.length === 0 ? (
             <ErrorText text={`${user.name} no posee órdenes registradas`} />
           ) : (

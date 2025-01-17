@@ -25,9 +25,7 @@ export const SearchComponent = ({ onSearch }: SearchComponentProps) => {
                 icon={<SearchIcon />}
                 placeholder="Ingrese el nombre o email del usuario..."
             />
-            {/* <div className="w-1/3 mt-3">
-                <PrimaryButton color="primary" text="Buscar" icon={SearchIcon} />
-            </div> */}
+           
         </div>
     );
 };

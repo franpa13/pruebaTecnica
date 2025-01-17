@@ -1,18 +1,5 @@
 import { Button } from '@mui/material';
-import { SxProps, Theme } from '@mui/system';
-import { SvgIconComponent } from '@mui/icons-material';
-
-interface Props {
-    text?: string; // Ahora es opcional
-    icon: SvgIconComponent;
-    onClick?: () => void;
-    sx?: SxProps<Theme>;
-    size?: "small" | "medium" | "large";
-    variant?: "contained" | "outlined" | "text";
-    fontWeight?: string;
-    color?: "error" | "info" | "inherit" | "primary" | "secondary" | "success" | "warning";
-
-}
+import { ButtonProps } from '../../types/types';
 
 export const PrimaryButton = ({
     text,
@@ -24,7 +11,7 @@ export const PrimaryButton = ({
     fontWeight = 'semibold',
     color = "primary",
 
-}: Props) => {
+}: ButtonProps) => {
     return (
         <Button
 

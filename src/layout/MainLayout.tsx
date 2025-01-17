@@ -36,7 +36,7 @@ export const MainLayout = ({ children }: Props) => {
             icon: PeopleOutlineOutlinedIcon,
         };
     };
-    // animaciones
+    // animaciones framer
     const animationVariants = {
         hidden: { opacity: 0, y: -20 },
         visible: { opacity: 1, y: 0 },
