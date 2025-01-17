@@ -10,7 +10,7 @@ export const useFetchData = (url: string): [User[], boolean, string] => {
         const fetchData = async () => {
 
             const response = await fetch(url);
-            if (!response.ok) throw new Error("Error al obtener los datos");
+            if (!response.ok) {setError("error en la peticion")};
             const result = await response.json();
 
             setData(result);
