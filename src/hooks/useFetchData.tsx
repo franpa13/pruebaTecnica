@@ -8,21 +8,18 @@ export const useFetchData = (url: string): [User[], boolean, string] => {
 
     useEffect(() => {
         const fetchData = async () => {
-            try {
-                const response = await fetch(url);
-                if (!response.ok) throw new Error("Error al obtener los datos");
-                const result = await response.json();
 
-                setData(result);
+            const response = await fetch(url);
+            if (!response.ok) throw new Error("Error al obtener los datos");
+            const result = await response.json();
 
-                setTimeout(() => {
-                    setLoading(false);
-                }, 400);
+            setData(result);
 
-            } catch (err: any) {
-                setError(err.message);
+            setTimeout(() => {
                 setLoading(false);
-            }
+            }, 400);
+
+
         };
 
         fetchData();
